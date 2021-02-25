@@ -301,7 +301,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
 
 	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/alacritty-dropdown") },
-	{ ControlMask,               XK_slash,     spawn,       SHCMD("xdotool sleep 0.2 key g key c key c") },
+	{ ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment") },
 	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
 	/* { MODKEY, XK_bracketleft, spawn,  {.v="sleep 0.2 && xdotool key aring"} } */
 };
