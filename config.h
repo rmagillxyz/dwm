@@ -304,6 +304,8 @@ static Key keys[] = {
 	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/alacritty-dropdown") },
 	{ ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") },
 	{ ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") },
+	/* { ControlMask|ShiftMask,               XK_n,     spawn,       SHCMD("~/bin/binding_nvim_ctl-shft-n.sh") }, */
+	/* this  conflicts and i'm not even using it ^ */
 	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
 	/* { MODKEY, XK_bracketleft, spawn,  {.v="sleep 0.2 && xdotool key aring"} } */
 };
