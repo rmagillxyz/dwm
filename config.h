@@ -160,7 +160,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
-	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
+	/* { MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") }, */
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
@@ -301,9 +301,12 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
 	/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
 
-	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/alacritty-dropdown") },
+	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/tdrop-alacritty") },
+	{ Mod1Mask,              XK_apostrophe,      spawn,       SHCMD("~/bin/tdrop-st") },
+	{ MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") },
 	{ ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") },
 	{ ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") },
+	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
 	/* { ControlMask|ShiftMask,               XK_n,     spawn,       SHCMD("~/bin/binding_nvim_ctl-shft-n.sh") }, */
 	/* this  conflicts and i'm not even using it ^ */
 	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
