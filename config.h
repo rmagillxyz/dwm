@@ -17,16 +17,22 @@ static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=16", "JoyPixels:pixelsize=16:antialias=true:autohint=true"  };
 /* static char *fonts[]          = {  "JetBrainsMono:pixelsize=15:antialias=true:autohint=true", "monospace:size=15" }; */
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
+
+
 /* static char selbordercolor[]        = "#770000"; */
 /* static char selbgcolor[]            = "#005577"; */
 /* static char selbordercolor[]        = "#d66700"; */
 /* static char selbgcolor[]            = "#605c02"; */
-static char selbordercolor[]        = "#333333";
+/* static char selbgcolor[]            = "#232731"; */
+/* static char selbgcolor[]            = "#605c02"; */
+
+static char normbgcolor[]           = "#222222";
+static char normfgcolor[]           = "#bbbbbb";
+static char normbordercolor[]       = "#333333"; // unfocused border
+static char selbordercolor[]        = "#444444"; // focused border
+static char selfgcolor[]            = "#eeeeee";
 static char selbgcolor[]            = "#232731";
+
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -168,7 +174,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-	{ MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") },
+	/* { MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") }, */
 	{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD(TERMINAL " -e htop") },
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
@@ -308,6 +314,7 @@ static Key keys[] = {
 	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/tdrop-alacritty") },
 	{ Mod1Mask,              XK_apostrophe,      spawn,       SHCMD("~/bin/tdrop-st") },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") },
+	{ MODKEY,			XK_r,		spawn,		SHCMD("~/bin/tdrop-brave") },
 	{ ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") },
 	{ ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") },
 	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
