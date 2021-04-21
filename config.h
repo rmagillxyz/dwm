@@ -3,6 +3,7 @@
 /* Constants */
 #define TERMINAL "alacritty"
 #define TERMCLASS "Alacritty"
+#define TERMINALALT "st"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -112,6 +113,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *termcmdalt[]  = { TERMINALALT, NULL };
 
 /*
  * Xresources preferences to load at startup
@@ -210,10 +212,11 @@ static Key keys[] = {
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
 	{ MODKEY,			XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } },
-	/* { MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} }, */
-	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
-	{ MODKEY|ShiftMask,		XK_Return,	togglescratch,	{.ui = 0} },
+	{ MODKEY|ShiftMask,		XK_Return, spawn,		{.v = termcmdalt } },
+	{ MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") },
+	{ MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 0} },
 
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
