@@ -166,7 +166,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("sysact") },
-	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("sysact") },
+	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("dunstctl close-all") },
 
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
@@ -222,7 +222,6 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
@@ -322,6 +321,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") },
 	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
 	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
+	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
 	/* { ControlMask|ShiftMask,               XK_n,     spawn,       SHCMD("~/bin/binding_nvim_ctl-shft-n.sh") }, */
 	/* this  conflicts and i'm not even using it ^ */
 	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
