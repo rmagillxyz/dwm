@@ -30,7 +30,8 @@ static char *fonts[]          = { "monospace:size=16", "JoyPixels:pixelsize=16:a
 static char normbgcolor[]           = "#222222";
 static char normfgcolor[]           = "#bbbbbb";
 static char normbordercolor[]       = "#333333"; // unfocused border
-static char selbordercolor[]        = "#444444"; // focused border
+/* static char selbordercolor[]        = "#444444"; // focused border */
+static char selbordercolor[]        = "#555555"; // focused border
 static char selfgcolor[]            = "#eeeeee";
 static char selbgcolor[]            = "#232731";
 
@@ -322,6 +323,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
 	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
 	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
+	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
 	/* { ControlMask|ShiftMask,               XK_n,     spawn,       SHCMD("~/bin/binding_nvim_ctl-shft-n.sh") }, */
 	/* this  conflicts and i'm not even using it ^ */
 	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
