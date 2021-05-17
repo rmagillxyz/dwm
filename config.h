@@ -48,10 +48,13 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd3[] = {TERMINAL, 	"-n", "splf", 	"-g", 	"144x41", 	"-e", 	"lf", 						NULL };
+
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spcalc",      spcmd2},
+	{"splf",      		spcmd3},
 };
 
 /* tagging */
@@ -68,6 +71,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     0,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+	{ NULL,      "splf",    	NULL,       	    SPTAG(2),     1,           1,         0,        -1 },
 };
 
 /* layout(s) */
@@ -177,7 +181,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
 	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-	{ MODKEY|ShiftMask,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") },
+	/* { MODKEY|ShiftMask,			XK_r,		spawn,		SHCMD(TERMINAL " -e lf") }, */
 	{ MODKEY|ShiftMask,		XK_h,		spawn,		SHCMD(TERMINAL " -e htop") },
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,		setlayout,	{.v = &layouts[1]} }, /* bstack */
@@ -311,6 +315,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,			XK_apostrophe,       spawn,       SHCMD("~/bin/tdrop-alacritty") },
 	{ MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 1} },
 	{ Mod1Mask,              XK_apostrophe, 	togglescratch,	{.ui = 0} },
+	{ MODKEY|ShiftMask,              XK_l, 	togglescratch,	{.ui = 2} },
 
 	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
 	/* { ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") }, */
