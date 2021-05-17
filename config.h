@@ -151,7 +151,7 @@ static Key keys[] = {
 	STACKKEYS(MODKEY|ShiftMask,                push)
 	/* { MODKEY|ShiftMask,		XK_Escape,	spawn,	SHCMD("") }, */
 	{ MODKEY,			XK_grave,	spawn,	SHCMD("dmenuunicode") },
-	{ MODKEY|ShiftMask,		XK_grave,	togglescratch,	SHCMD("") },
+	/* { MODKEY|ShiftMask,		XK_grave,	togglescratch,	SHCMD("") }, */ //kills dwm
 	TAGKEYS(			XK_1,		0)
 	TAGKEYS(			XK_2,		1)
 	TAGKEYS(			XK_3,		2)
@@ -168,12 +168,11 @@ static Key keys[] = {
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("sysact") },
+	{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("dunstctl close-all") },
-
 	{ MODKEY,			XK_Tab,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
-	{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("sysact") },
 	/* { MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") }, */
 	{ MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
@@ -214,11 +213,11 @@ static Key keys[] = {
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
 	{ MODKEY,			XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } },
-	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} },
+	/* { MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} }, */
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_Return, spawn,		{.v = termcmdalt } },
-	{ MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") },
-	{ MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 0} },
+	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 0} }, */
 
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
@@ -228,7 +227,7 @@ static Key keys[] = {
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") },
+	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") }, */
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
@@ -299,6 +298,28 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
 	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("xbacklight -dec 15") },
 
+   /* jenny bindings */
+	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
+	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
+	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
+	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
+	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c ~/vimwiki") },
+
+	{ MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") },
+	{ MODKEY,			XK_r,		spawn,		SHCMD("~/bin/tdrop-brave") },
+	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/tdrop-st") },
+	{ MODKEY|ShiftMask,			XK_apostrophe,       spawn,       SHCMD("~/bin/tdrop-alacritty") },
+	{ MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 1} },
+	{ Mod1Mask,              XK_apostrophe, 	togglescratch,	{.ui = 0} },
+
+	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
+	/* { ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") }, */
+	/* { ControlMask|ShiftMask,               XK_n,     spawn,       SHCMD("~/bin/binding_nvim_ctl-shft-n.sh") }, */
+	/* this  conflicts and i'm not even using it ^ */
+	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
+	/* { MODKEY, XK_bracketleft, spawn,  {.v="sleep 0.2 && xdotool key aring"} } */
+
+
 	/* { MODKEY|Mod4Mask,              XK_h,      incrgaps,       {.i = +1 } }, */
 	/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
 	/* { MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } }, */
@@ -315,20 +336,6 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
 	/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
 
-	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/tdrop-st") },
-	{ Mod1Mask,              XK_apostrophe,      spawn,       SHCMD("~/bin/tdrop-alacritty") },
-	{ MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") },
-	{ MODKEY,			XK_r,		spawn,		SHCMD("~/bin/tdrop-brave") },
-	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
-	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
-	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
-	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
-	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
-	/* { ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") }, */
-	/* { ControlMask|ShiftMask,               XK_n,     spawn,       SHCMD("~/bin/binding_nvim_ctl-shft-n.sh") }, */
-	/* this  conflicts and i'm not even using it ^ */
-	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
-	/* { MODKEY, XK_bracketleft, spawn,  {.v="sleep 0.2 && xdotool key aring"} } */
 };
 
 /* button definitions */
