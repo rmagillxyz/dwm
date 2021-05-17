@@ -309,13 +309,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
 	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c ~/vimwiki") },
 
-	{ MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") },
-	{ MODKEY,			XK_r,		spawn,		SHCMD("~/bin/tdrop-brave") },
-	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/tdrop-st") },
-	{ MODKEY|ShiftMask,			XK_apostrophe,       spawn,       SHCMD("~/bin/tdrop-alacritty") },
+	/* { MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") }, */
+	{ Mod1Mask,			XK_w,		spawn,		SHCMD("tdrop-firer") },
+	{ Mod1Mask,			XK_m,		spawn,		SHCMD("tdrop-firer1") },
+	{ MODKEY,			XK_r,		spawn,		SHCMD("tdrop-brave") },
+	{ MODKEY|ShiftMask,		XK_apostrophe,  spawn,       SHCMD("tdrop-alacritty") },
+	{ Mod1Mask,           XK_apostrophe,  spawn,       SHCMD("tdrop-st") },
 	{ MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 1} },
-	{ Mod1Mask,              XK_apostrophe, 	togglescratch,	{.ui = 0} },
-	{ MODKEY|ShiftMask,              XK_l, 	togglescratch,	{.ui = 2} },
+	{ Mod1Mask,           XK_semicolon, 	togglescratch,	{.ui = 0} },
+	{ MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} },
 
 	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
 	/* { ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") }, */
