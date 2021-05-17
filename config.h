@@ -1,9 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "alacritty"
-#define TERMCLASS "Alacritty"
-#define TERMINALALT "st"
+#define TERMINAL "st"
+#define TERMCLASS "St"
+
+#define TERMINALALT "alacritty"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -314,16 +315,16 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
 	/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
 
-	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/tdrop-alacritty") },
-	{ Mod1Mask,              XK_apostrophe,      spawn,       SHCMD("~/bin/tdrop-st") },
+	{ Mod1Mask,              XK_semicolon,      spawn,       SHCMD("~/bin/tdrop-st") },
+	{ Mod1Mask,              XK_apostrophe,      spawn,       SHCMD("~/bin/tdrop-alacritty") },
 	{ MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("~/bin/tdrop-brave") },
-	{ ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") },
-	{ ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") },
 	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
 	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
 	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
 	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
+	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
+	/* { ControlMask|ShiftMask,               XK_s,     spawn,       SHCMD("~/bin/binding_nvim_save_all.sh") }, */
 	/* { ControlMask|ShiftMask,               XK_n,     spawn,       SHCMD("~/bin/binding_nvim_ctl-shft-n.sh") }, */
 	/* this  conflicts and i'm not even using it ^ */
 	/* { ControlMask,                    spawn,       { .v="sleep 0.2 && xdotool key g key c key c" } }, */
