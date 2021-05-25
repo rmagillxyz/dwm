@@ -34,7 +34,9 @@ static char normbordercolor[]       = "#333333"; // unfocused border
 /* static char selbordercolor[]        = "#444444"; // focused border */
 static char selbordercolor[]        = "#555555"; // focused border
 static char selfgcolor[]            = "#eeeeee";
-static char selbgcolor[]            = "#232731";
+/* static char selbgcolor[]            = "#232731"; */
+/* static char selbgcolor[]            = "#005f00"; */
+static char selbgcolor[]            = "#3a3a3a";
 
 static char *colors[][3] = {
        /*               fg           bg           border   */
