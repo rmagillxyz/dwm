@@ -307,7 +307,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
 	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
 	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
-	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c ~/vimwiki") },
+	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim ~/vimwiki") },
 
 	/* { MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") }, */
 	{ Mod1Mask,			XK_w,		spawn,		SHCMD("tdrop-firer") },
