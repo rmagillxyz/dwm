@@ -7,19 +7,25 @@
 #define TERMINALALT "alacritty"
 
 /* appearance */
-static unsigned int borderpx  = 3;        /* border pixel of windows */
-static unsigned int snap      = 32;       /* snap pixel */
-static unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
-static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-static int showbar            = 1;        /* 0 means no bar */
-static int topbar             = 1;        /* 0 means bottom bar */
-static char *fonts[]          = { "monospace:size=16", "JoyPixels:pixelsize=16:antialias=true:autohint=true"  };
-/* static char *fonts[]          = {  "JetBrainsMono:pixelsize=15:antialias=true:autohint=true", "monospace:size=15" }; */
-
+static unsigned int borderpx = 3; /* border pixel of windows */
+static unsigned int snap = 32;    /* snap pixel */
+static unsigned int gappih = 20;  /* horiz inner gap between windows */
+static unsigned int gappiv = 10;  /* vert inner gap between windows */
+static unsigned int gappoh =
+    10; /* horiz outer gap between windows and screen edge */
+static unsigned int gappov =
+    30; /* vert outer gap between windows and screen edge */
+static int swallowfloating =
+    0; /* 1 means swallow floating windows by default */
+static int smartgaps =
+    0;                  /* 1 means no outer gap when there is only one window */
+static int showbar = 1; /* 0 means no bar */
+static int topbar = 1;  /* 0 means bottom bar */
+static char *fonts[] = {"monospace:size=16",
+                        "JoyPixels:pixelsize=16:antialias=true:autohint=true"};
+/* static char *fonts[]          = {
+ * "JetBrainsMono:pixelsize=15:antialias=true:autohint=true",
+ * "monospace:size=15" }; */
 
 /* static char selbordercolor[]        = "#770000"; */
 /* static char selbgcolor[]            = "#005577"; */
@@ -28,128 +34,138 @@ static char *fonts[]          = { "monospace:size=16", "JoyPixels:pixelsize=16:a
 /* static char selbgcolor[]            = "#232731"; */
 /* static char selbgcolor[]            = "#605c02"; */
 
-static char normbgcolor[]           = "#222222";
-static char normfgcolor[]           = "#bbbbbb";
-static char normbordercolor[]       = "#333333"; // unfocused border
+static char normbgcolor[] = "#222222";
+static char normfgcolor[] = "#bbbbbb";
+static char normbordercolor[] = "#333333"; // unfocused border
 /* static char selbordercolor[]        = "#444444"; // focused border */
-static char selbordercolor[]        = "#555555"; // focused border
-static char selfgcolor[]            = "#eeeeee";
+static char selbordercolor[] = "#555555"; // focused border
+static char selfgcolor[] = "#eeeeee";
 /* static char selbgcolor[]            = "#232731"; */
 /* static char selbgcolor[]            = "#005f00"; */
-static char selbgcolor[]            = "#3a3a3a";
+static char selbgcolor[] = "#3a3a3a";
 
 static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+    /*               fg           bg           border   */
+    [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor},
+    [SchemeSel] = {selfgcolor, selbgcolor, selbordercolor},
 };
 
 typedef struct {
-	const char *name;
-	const void *cmd;
+  const char *name;
+  const void *cmd;
 } Sp;
-const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
-const char *spcmd3[] = {TERMINAL, 	"-n", "splf", 	"-g", 	"144x41", 	"-e", 	"lf", 						NULL };
+const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
+const char *spcmd2[] = {TERMINAL, "-n",    "spcalc", "-f", "monospace:size=16",
+                        "-g",     "50x20", "-e",     "bc", "-lq",
+                        NULL};
+const char *spcmd3[] = {TERMINAL, "-n", "splf", "-g",
+                        "144x41", "-e", "lf",   NULL};
 
 static Sp scratchpads[] = {
-	/* name          cmd  */
-	{"spterm",      spcmd1},
-	{"spcalc",      spcmd2},
-	{"splf",      		spcmd3},
+    /* name          cmd  */
+    {"spterm", spcmd1},
+    {"spcalc", spcmd2},
+    {"splf", spcmd3},
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	*/
-	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
-	{ "Gimp",     NULL,       NULL,       	    1 << 8,       0,           0,         0,        -1 },
-	{ TERMCLASS,   NULL,       NULL,       	    0,            0,           1,         0,        -1 },
-	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
-	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     0,           1,         0,        -1 },
-	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
-	{ NULL,      "splf",    	NULL,       	    SPTAG(2),     1,           1,         0,        -1 },
+    /* xprop(1):
+     *	WM_CLASS(STRING) = instance, class
+     *	WM_NAME(STRING) = title
+     */
+    /* class    instance      title       	 tags mask    isfloating
+       isterminal  noswallow  monitor */
+    {"Gimp", NULL, NULL, 1 << 8, 0, 0, 0, -1},
+    {TERMCLASS, NULL, NULL, 0, 0, 1, 0, -1},
+    {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1},
+    {NULL, "spterm", NULL, SPTAG(0), 0, 1, 0, -1},
+    {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1},
+    {NULL, "splf", NULL, SPTAG(2), 1, 1, 0, -1},
 };
 
 /* layout(s) */
-static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
-#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+static float mfact = 0.55;  /* factor of master area size [0.05..0.95] */
+static int nmaster = 1;     /* number of clients in master area */
+static int resizehints = 0; /* 1 means respect size hints in tiled resizals */
+#define FORCE_VSPLIT                                                           \
+  1 /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 static const Layout layouts[] = {
-	/* symbol     arrange function */
- 	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
-	{ "TTT",	bstack },		/* Master on top, slaves on bottom */
+    /* symbol     arrange function */
+    {"[]=", tile},   /* Default: Master on left, slaves on right */
+    {"TTT", bstack}, /* Master on top, slaves on bottom */
 
-	{ "[@]",	spiral },		/* Fibonacci spiral */
-	{ "[\\]",	dwindle },		/* Decreasing in size right and leftward */
+    {"[@]", spiral},   /* Fibonacci spiral */
+    {"[\\]", dwindle}, /* Decreasing in size right and leftward */
 
-	{ "[D]",	deck },			/* Master on left, slaves in monocle-like mode on right */
- 	{ "[M]",	monocle },		/* All windows on top of eachother */
+    {"[D]", deck},    /* Master on left, slaves in monocle-like mode on right */
+    {"[M]", monocle}, /* All windows on top of eachother */
 
-	{ "|M|",	centeredmaster },		/* Master in middle, slaves on sides */
-	{ ">M>",	centeredfloatingmaster },	/* Same but master floats */
+    {"|M|", centeredmaster},         /* Master in middle, slaves on sides */
+    {">M>", centeredfloatingmaster}, /* Same but master floats */
 
-	{ "><>",	NULL },			/* no layout function means floating behavior */
-	{ NULL,		NULL },
+    {"><>", NULL}, /* no layout function means floating behavior */
+    {NULL, NULL},
 };
 
 /* key definitions */
 #define MODKEY Mod4Mask
-#define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-#define STACKKEYS(MOD,ACTION) \
-	{ MOD,	XK_j,	ACTION##stack,	{.i = INC(+1) } }, \
-	{ MOD,	XK_k,	ACTION##stack,	{.i = INC(-1) } }, \
-	{ MOD,  XK_v,   ACTION##stack,  {.i = 0 } }, \
-	/* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
-	/* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
-	/* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
-	/* { MOD, XK_x,     ACTION##stack, {.i = -1 } }, */
+#define TAGKEYS(KEY, TAG)                                                      \
+  {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
+      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
+      {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
+      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
+#define STACKKEYS(MOD, ACTION)                                                 \
+  {MOD, XK_j, ACTION##stack, {.i = INC(+1)}},                                  \
+      {MOD, XK_k, ACTION##stack, {.i = INC(-1)}},                              \
+      {MOD,                                                                    \
+       XK_v,                                                                   \
+       ACTION##stack,                                                          \
+       {.i = 0}}, /* { MOD, XK_grave, ACTION##stack, {.i = PREVSEL } }, \ */
+/* { MOD, XK_a,     ACTION##stack, {.i = 1 } }, \ */
+/* { MOD, XK_z,     ACTION##stack, {.i = 2 } }, \ */
+/* { MOD, XK_x,     ACTION##stack, {.i = -1 } }, */
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd)                                                             \
+  {                                                                            \
+    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
+  }
 
 /* commands */
-static const char *termcmd[]  = { TERMINAL, NULL };
-static const char *termcmdalt[]  = { TERMINALALT, NULL };
+static const char *termcmd[] = {TERMINAL, NULL};
+static const char *termcmdalt[] = {TERMINALALT, NULL};
 
 /*
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		{ "color0",		STRING,	&normbordercolor },
-		{ "color8",		STRING,	&selbordercolor },
-		{ "color0",		STRING,	&normbgcolor },
-		{ "color4",		STRING,	&normfgcolor },
-		{ "color0",		STRING,	&selfgcolor },
-		{ "color4",		STRING,	&selbgcolor },
-		{ "borderpx",		INTEGER, &borderpx },
-		{ "snap",		INTEGER, &snap },
-		{ "showbar",		INTEGER, &showbar },
-		{ "topbar",		INTEGER, &topbar },
-		{ "nmaster",		INTEGER, &nmaster },
-		{ "resizehints",	INTEGER, &resizehints },
-		{ "mfact",		FLOAT,	&mfact },
-		{ "gappih",		INTEGER, &gappih },
-		{ "gappiv",		INTEGER, &gappiv },
-		{ "gappoh",		INTEGER, &gappoh },
-		{ "gappov",		INTEGER, &gappov },
-		{ "swallowfloating",	INTEGER, &swallowfloating },
-		{ "smartgaps",		INTEGER, &smartgaps },
+    {"color0", STRING, &normbordercolor},
+    {"color8", STRING, &selbordercolor},
+    {"color0", STRING, &normbgcolor},
+    {"color4", STRING, &normfgcolor},
+    {"color0", STRING, &selfgcolor},
+    {"color4", STRING, &selbgcolor},
+    {"borderpx", INTEGER, &borderpx},
+    {"snap", INTEGER, &snap},
+    {"showbar", INTEGER, &showbar},
+    {"topbar", INTEGER, &topbar},
+    {"nmaster", INTEGER, &nmaster},
+    {"resizehints", INTEGER, &resizehints},
+    {"mfact", FLOAT, &mfact},
+    {"gappih", INTEGER, &gappih},
+    {"gappiv", INTEGER, &gappiv},
+    {"gappoh", INTEGER, &gappoh},
+    {"gappov", INTEGER, &gappov},
+    {"swallowfloating", INTEGER, &swallowfloating},
+    {"smartgaps", INTEGER, &smartgaps},
 };
 
-#include <X11/XF86keysym.h>
 #include "shiftview.c"
+#include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -236,7 +252,7 @@ static Key keys[] = {
 	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") }, */
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
-	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask|Mod1Mask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_Left,	spawn,		SHCMD("mpc prev") },
 	{ MODKEY|ShiftMask,		XK_Left,	spawn,		SHCMD("mpc seek 0%") },
 	{ MODKEY,			XK_Right,	spawn,		SHCMD("mpc next") },
@@ -314,11 +330,13 @@ static Key keys[] = {
 	/* { MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") }, */
 	{ Mod1Mask,			XK_w,		spawn,		SHCMD("tdrop-firer") },
 	{ Mod1Mask,			XK_m,		spawn,		SHCMD("tdrop-firer1") },
+	{ MODKEY|ShiftMask,			XK_m,		spawn,		SHCMD("tdrop-firearp") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("tdrop-brave") },
+
 	{ MODKEY|ShiftMask,		XK_apostrophe,  spawn,       SHCMD("tdrop-alacritty") },
-	{ Mod1Mask,           XK_apostrophe,  spawn,       SHCMD("tdrop-st") },
-	{ MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 1} },
-	{ Mod1Mask,           XK_semicolon, 	togglescratch,	{.ui = 0} },
+	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
+	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} },
+	{ MODKEY|ShiftMask,		XK_bracketright,	togglescratch,	{.ui = 1} },
 	{ MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} },
 
 	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
@@ -348,29 +366,32 @@ static Key keys[] = {
 };
 
 /* button definitions */
-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
+ * ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-	/* click                event mask      button          function        argument */
+/* click                event mask      button          function        argument
+ */
 #ifndef __OpenBSD__
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button1,        sigdwmblocks,   {.i = 1} },
-	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   {.i = 2} },
-	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },
-	{ ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
-	{ ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
-	{ ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   {.i = 6} },
+    {ClkWinTitle, 0, Button2, zoom, {0}},
+    {ClkStatusText, 0, Button1, sigdwmblocks, {.i = 1}},
+    {ClkStatusText, 0, Button2, sigdwmblocks, {.i = 2}},
+    {ClkStatusText, 0, Button3, sigdwmblocks, {.i = 3}},
+    {ClkStatusText, 0, Button4, sigdwmblocks, {.i = 4}},
+    {ClkStatusText, 0, Button5, sigdwmblocks, {.i = 5}},
+    {ClkStatusText, ShiftMask, Button1, sigdwmblocks, {.i = 6}},
 #endif
-	{ ClkStatusText,        ShiftMask,      Button3,        spawn,          SHCMD(TERMINAL " -e nvim ~/.local/src/dwmblocks/config.h") },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        defaultgaps,	{0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkClientWin,		MODKEY,		Button4,	incrgaps,	{.i = +1} },
-	{ ClkClientWin,		MODKEY,		Button5,	incrgaps,	{.i = -1} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	{ ClkTagBar,		0,		Button4,	shiftview,	{.i = -1} },
-	{ ClkTagBar,		0,		Button5,	shiftview,	{.i = 1} },
-	{ ClkRootWin,		0,		Button2,	togglebar,	{0} },
+    {ClkStatusText, ShiftMask, Button3, spawn,
+     SHCMD(TERMINAL " -e nvim ~/.local/src/dwmblocks/config.h")},
+    {ClkClientWin, MODKEY, Button1, movemouse, {0}},
+    {ClkClientWin, MODKEY, Button2, defaultgaps, {0}},
+    {ClkClientWin, MODKEY, Button3, resizemouse, {0}},
+    {ClkClientWin, MODKEY, Button4, incrgaps, {.i = +1}},
+    {ClkClientWin, MODKEY, Button5, incrgaps, {.i = -1}},
+    {ClkTagBar, 0, Button1, view, {0}},
+    {ClkTagBar, 0, Button3, toggleview, {0}},
+    {ClkTagBar, MODKEY, Button1, tag, {0}},
+    {ClkTagBar, MODKEY, Button3, toggletag, {0}},
+    {ClkTagBar, 0, Button4, shiftview, {.i = -1}},
+    {ClkTagBar, 0, Button5, shiftview, {.i = 1}},
+    {ClkRootWin, 0, Button2, togglebar, {0}},
 };
