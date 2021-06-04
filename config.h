@@ -252,7 +252,9 @@ static Key keys[] = {
 	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") }, */
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
-	{ MODKEY|ShiftMask|Mod1Mask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ ShiftMask|Mod1Mask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	/* { MODKEY|ShiftMask,             XK_m,           spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }, */
+
 	{ MODKEY,			XK_Left,	spawn,		SHCMD("mpc prev") },
 	{ MODKEY|ShiftMask,		XK_Left,	spawn,		SHCMD("mpc seek 0%") },
 	{ MODKEY,			XK_Right,	spawn,		SHCMD("mpc next") },
