@@ -252,7 +252,7 @@ static Key keys[] = {
 	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") }, */
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
-	{ ShiftMask|Mod1Mask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	/* { MODKEY|ShiftMask,             XK_m,           spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }, */
 
 	{ MODKEY,			XK_Left,	spawn,		SHCMD("mpc prev") },
@@ -332,13 +332,14 @@ static Key keys[] = {
 	/* { MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") }, */
 	{ Mod1Mask,			XK_w,		spawn,		SHCMD("tdrop-firer") },
 	{ Mod1Mask,			XK_m,		spawn,		SHCMD("tdrop-firer1") },
-	{ MODKEY|ShiftMask,			XK_m,		spawn,		SHCMD("tdrop-firearp") },
+	{ Mod1Mask|ShiftMask,			XK_m,		spawn,		SHCMD("tdrop-firearp") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("tdrop-brave") },
 
 	{ MODKEY|ShiftMask,		XK_apostrophe,  spawn,       SHCMD("tdrop-alacritty") },
 	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
 	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} },
-	{ MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} },
+	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
+	{ Mod1Mask,   XK_l, 	togglescratch,	{.ui = 2} },
 	/* { MODKEY|ShiftMask,		XK_bracketright,	togglescratch,	{.ui = 1} }, */
 
 	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
