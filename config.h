@@ -55,17 +55,17 @@ typedef struct {
   const void *cmd;
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
-/* const char *spcmd2[] = {TERMINAL, "-n",    "spcalc", "-f", "monospace:size=16", */
+/* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",   NULL}; */
+const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL};
+/* const char *spcmd3[] = {TERMINAL, "-n",    "spcalc", "-f", "monospace:size=16", */
 /*                         "-g",     "50x20", "-e",     "bc", "-lq", */
 /*                         NULL}; */
-const char *spcmd3[] = {TERMINAL, "-n", "splf", "-g",
-                        "144x41", "-e", "lf",   NULL};
 
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1},
-    /* {"spcalc", spcmd2}, */
-    {"splf", spcmd3},
+    {"splf", spcmd2},
+    /* {"spcalc", spcmd3}, */
 };
 
 /* tagging */
@@ -78,12 +78,12 @@ static const Rule rules[] = {
      */
     /* class    instance      title       	 tags mask    isfloating
        isterminal  noswallow  monitor */
-    {"Gimp", NULL, NULL, 1 << 8, 0, 0, 0, -1},
+    /* {"Gimp", NULL, NULL, 1 << 8, 0, 0, 0, -1}, */
     {TERMCLASS, NULL, NULL, 0, 0, 1, 0, -1},
     {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1},
     {NULL, "spterm", NULL, SPTAG(0), 0, 1, 0, -1},
+    {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1},
     /* {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1}, */
-    {NULL, "splf", NULL, SPTAG(2), 1, 1, 0, -1},
 };
 
 /* layout(s) */
@@ -338,8 +338,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_apostrophe,  spawn,       SHCMD("tdrop-alacritty") },
 	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
 	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} },
+	{ Mod1Mask,   XK_l, 	togglescratch,	{.ui = 1} },
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
-	{ Mod1Mask,   XK_l, 	togglescratch,	{.ui = 2} },
+	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,		XK_bracketright,	togglescratch,	{.ui = 1} }, */
 
 	/* { ControlMask,               XK_slash,     spawn,       SHCMD("~/bin/binding_toggle_comment.sh") }, */
