@@ -55,8 +55,11 @@ typedef struct {
   const void *cmd;
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
+const char *spcmd2[] = {TERMINAL, "-n", "spfloaterm", "-g", "80x30", NULL};
+const char *spcmd3[] = {TERMINAL, "-n", "spncmpcpp", "-g", "80x30", "-e", "ncmpcpp", NULL};
+
+/* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",   NULL}; */
-const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL};
 /* const char *spcmd3[] = {TERMINAL, "-n",    "spcalc", "-f", "monospace:size=16", */
 /*                         "-g",     "50x20", "-e",     "bc", "-lq", */
 /*                         NULL}; */
@@ -64,7 +67,9 @@ const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1},
-    {"splf", spcmd2},
+    {"spfloaterm", spcmd2},
+		{"spncmpcpp", spcmd3}
+    /* {"splf", spcmd2}, */
     /* {"spcalc", spcmd3}, */
 };
 
@@ -82,7 +87,9 @@ static const Rule rules[] = {
     {TERMCLASS, NULL, NULL, 0, 0, 1, 0, -1},
     {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1},
     {NULL, "spterm", NULL, SPTAG(0), 0, 1, 0, -1},
-    {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1},
+    {NULL, "spfloaterm", NULL, SPTAG(1), 1, 1, 0, -1},
+    {NULL, "spncmpcpp", NULL, SPTAG(2), 1, 1, 0, -1},
+    /* {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1}, */
     /* {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1}, */
 };
 
@@ -251,7 +258,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
 	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") }, */
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
-	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") },
+	/* { MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") }, */
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	/* { MODKEY|ShiftMask,             XK_m,           spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }, */
 
@@ -339,6 +346,7 @@ static Key keys[] = {
 	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
 	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} },
 	{ Mod1Mask,   XK_l, 	togglescratch,	{.ui = 1} },
+	{ MODKEY,			XK_m,		togglescratch,	{.ui = 2} },
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,		XK_bracketright,	togglescratch,	{.ui = 1} }, */
