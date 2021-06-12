@@ -218,13 +218,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
 	{ MODKEY,			XK_o,		incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_o,		incnmaster,     {.i = -1 } },
+	{ MODKEY,			XK_backslash,		view,		{0} },
+
 	{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
 	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
 	{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("mpc seek -10") },
-	{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -60") },
 	{ MODKEY,			XK_bracketright,	spawn,		SHCMD("mpc seek +10") },
-	{ MODKEY|ShiftMask,		XK_bracketright,	spawn,		SHCMD("mpc seek +60") },
-	{ MODKEY,			XK_backslash,		view,		{0} },
+	{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc prev") },
+	{ MODKEY|ShiftMask,		XK_bracketright,	spawn,	SHCMD("mpc next") },
+	{ MODKEY,			XK_Left,	spawn,		 SHCMD("mpc seek -60") },
+	{ MODKEY,			XK_Right,	spawn,		  SHCMD("mpc seek +60")},
+	{ MODKEY|ShiftMask,		XK_Left,	spawn,		SHCMD("mpc seek 0%") },
+	{ MODKEY|ShiftMask,		XK_Right,	spawn,		SHCMD("mpc repeat") },
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
@@ -261,11 +266,6 @@ static Key keys[] = {
 	/* { MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") }, */
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	/* { MODKEY|ShiftMask,             XK_m,           spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }, */
-
-	{ MODKEY,			XK_Left,	spawn,		SHCMD("mpc prev") },
-	{ MODKEY|ShiftMask,		XK_Left,	spawn,		SHCMD("mpc seek 0%") },
-	{ MODKEY,			XK_Right,	spawn,		SHCMD("mpc next") },
-	{ MODKEY|ShiftMask,		XK_Right,	spawn,		SHCMD("mpc repeat") },
 
 	{ MODKEY,			XK_comma,	focusmon,	{.i = -1 } },
 	{ MODKEY|ShiftMask,		XK_comma,	tagmon,		{.i = -1 } },
