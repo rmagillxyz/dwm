@@ -38,7 +38,10 @@ static char normbgcolor[] = "#222222";
 static char normfgcolor[] = "#bbbbbb";
 static char normbordercolor[] = "#333333"; // unfocused border
 /* static char selbordercolor[]        = "#444444"; // focused border */
-static char selbordercolor[] = "#555555"; // focused border
+/* static char selbordercolor[] = "#555555"; // focused border */
+/* static char selbordercolor[] = "#555555"; // focused border */
+static char selbordercolor[] = "#888888"; // focused border
+/* static char selbordercolor[] = "#777777"; // focused border */
 static char selfgcolor[] = "#eeeeee";
 /* static char selbgcolor[]            = "#232731"; */
 /* static char selbgcolor[]            = "#005f00"; */
@@ -56,7 +59,8 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {TERMINAL, "-n", "spfloaterm", "-g", "80x30", NULL};
-const char *spcmd3[] = {TERMINAL, "-n", "spncmpcpp", "-g", "80x30", "-e", "ncmpcpp", NULL};
+const char *spcmd3[] = {TERMINAL, "-n", "spfloaterm_1", "-g", "90x40", NULL};
+const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g", "80x30", "-e", "ncmpcpp", NULL};
 
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",   NULL}; */
@@ -68,7 +72,8 @@ static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1},
     {"spfloaterm", spcmd2},
-		{"spncmpcpp", spcmd3}
+    {"spfloaterm_1", spcmd3},
+		{"spncmpcpp", spcmd4}
     /* {"splf", spcmd2}, */
     /* {"spcalc", spcmd3}, */
 };
@@ -88,7 +93,8 @@ static const Rule rules[] = {
     {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1},
     {NULL, "spterm", NULL, SPTAG(0), 0, 1, 0, -1},
     {NULL, "spfloaterm", NULL, SPTAG(1), 1, 1, 0, -1},
-    {NULL, "spncmpcpp", NULL, SPTAG(2), 1, 1, 0, -1},
+    {NULL, "spfloaterm_1", NULL, SPTAG(2), 1, 1, 0, -1},
+    {NULL, "spncmpcpp", NULL, SPTAG(3), 1, 1, 0, -1},
     /* {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1}, */
     /* {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1}, */
 };
@@ -346,7 +352,8 @@ static Key keys[] = {
 	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
 	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} },
 	{ Mod1Mask,   XK_l, 	togglescratch,	{.ui = 1} },
-	{ MODKEY,			XK_m,		togglescratch,	{.ui = 2} },
+	{ Mod1Mask,   XK_equal, 	togglescratch,	{.ui = 2} },
+	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,		XK_bracketright,	togglescratch,	{.ui = 1} }, */
