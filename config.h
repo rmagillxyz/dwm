@@ -60,11 +60,14 @@ typedef struct {
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {TERMINAL, "-n", "spfloaterm", "-g", "80x30", NULL};
 const char *spcmd3[] = {TERMINAL, "-n", "speqfloaterm", "-g", "85x35", NULL};
-const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g", "80x30", "-e", "ncmpcpp", NULL};
+const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g",
+                        "80x30",  "-e", "ncmpcpp",   NULL};
 
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
-/* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",   NULL}; */
-/* const char *spcmd3[] = {TERMINAL, "-n",    "spcalc", "-f", "monospace:size=16", */
+/* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",
+ * NULL}; */
+/* const char *spcmd3[] = {TERMINAL, "-n",    "spcalc", "-f",
+ * "monospace:size=16", */
 /*                         "-g",     "50x20", "-e",     "bc", "-lq", */
 /*                         NULL}; */
 
@@ -73,7 +76,7 @@ static Sp scratchpads[] = {
     {"spterm", spcmd1},
     {"spfloaterm", spcmd2},
     {"speqfloaterm", spcmd3},
-		{"spncmpcpp", spcmd4}
+    {"spncmpcpp", spcmd4}
     /* {"splf", spcmd2}, */
     /* {"spcalc", spcmd3}, */
 };
@@ -88,7 +91,12 @@ static const Rule rules[] = {
      */
     /* class    instance      title       	 tags mask    isfloating
        isterminal  noswallow  monitor */
+    /* class|instance|title|tags mask|isfloating|isterminal|noswallow|monitor */
     /* {"Gimp", NULL, NULL, 1 << 8, 0, 0, 0, -1}, */
+    /* { "t.cryp",     NULL,       NULL,       	    1 << 8,       0, 0, 0,
+       -1 }, */
+    {"Telegram", NULL, NULL, 1 << 8, 0, 0, 0, -1},
+    {"Signal", NULL, NULL, 1 << 8, 0, 0, 0, -1},
     {TERMCLASS, NULL, NULL, 0, 0, 1, 0, -1},
     {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1},
     {NULL, "spterm", NULL, SPTAG(0), 0, 1, 0, -1},
