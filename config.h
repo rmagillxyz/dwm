@@ -59,7 +59,7 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {TERMINAL, "-n", "spfloaterm", "-g", "80x30", NULL};
-const char *spcmd3[] = {TERMINAL, "-n", "spfloaterm_1", "-g", "90x40", NULL};
+const char *spcmd3[] = {TERMINAL, "-n", "speqfloaterm", "-g", "85x35", NULL};
 const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g", "80x30", "-e", "ncmpcpp", NULL};
 
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
@@ -72,7 +72,7 @@ static Sp scratchpads[] = {
     /* name          cmd  */
     {"spterm", spcmd1},
     {"spfloaterm", spcmd2},
-    {"spfloaterm_1", spcmd3},
+    {"speqfloaterm", spcmd3},
 		{"spncmpcpp", spcmd4}
     /* {"splf", spcmd2}, */
     /* {"spcalc", spcmd3}, */
@@ -93,7 +93,7 @@ static const Rule rules[] = {
     {NULL, NULL, "Event Tester", 0, 0, 0, 1, -1},
     {NULL, "spterm", NULL, SPTAG(0), 0, 1, 0, -1},
     {NULL, "spfloaterm", NULL, SPTAG(1), 1, 1, 0, -1},
-    {NULL, "spfloaterm_1", NULL, SPTAG(2), 1, 1, 0, -1},
+    {NULL, "speqfloaterm", NULL, SPTAG(2), 1, 1, 0, -1},
     {NULL, "spncmpcpp", NULL, SPTAG(3), 1, 1, 0, -1},
     /* {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1}, */
     /* {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1}, */
