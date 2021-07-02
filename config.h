@@ -360,7 +360,8 @@ static Key keys[] = {
 	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
 	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} },
 	{ Mod1Mask,   XK_l, 	togglescratch,	{.ui = 1} },
-	{ Mod1Mask,   XK_equal, 	togglescratch,	{.ui = 2} },
+	/* { Mod1Mask,   XK_equal, 	togglescratch,	{.ui = 2} }, */
+	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} },
 	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
