@@ -354,6 +354,7 @@ static Key keys[] = {
 	/* { MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") }, */
 	{ Mod1Mask,			XK_w,		spawn,		SHCMD("tdrop-firer") },
 	{ Mod1Mask,			XK_m,		spawn,		SHCMD("tdrop-firer1") },
+	{ Mod1Mask,			XK_r,		spawn,		SHCMD("tdrop-firemj") },
 	{ Mod1Mask|ShiftMask,			XK_m,		spawn,		SHCMD("tdrop-firearp") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD("tdrop-brave") },
 
