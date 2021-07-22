@@ -279,7 +279,7 @@ static Key keys[] = {
 	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") }, */
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	/* { MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") }, */
-	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	/* { MODKEY|ShiftMask,             XK_m,           spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }, */
 
 	{ MODKEY,			XK_comma,	focusmon,	{.i = -1 } },
@@ -352,11 +352,13 @@ static Key keys[] = {
 	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim ~/vimwiki/index.md") },
 
 	/* { MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") }, */
-	{ Mod1Mask,			XK_w,		spawn,		SHCMD("tdrop-firer") },
-	{ Mod1Mask,			XK_m,		spawn,		SHCMD("tdrop-firer1") },
-	{ Mod1Mask,			XK_r,		spawn,		SHCMD("tdrop-firemj") },
-	{ Mod1Mask|ShiftMask,			XK_m,		spawn,		SHCMD("tdrop-firearp") },
-	{ MODKEY,			XK_r,		spawn,		SHCMD("tdrop-brave") },
+	{ Mod1Mask,			XK_r,		spawn,		SHCMD("tdrop-firer") },
+	{ Mod1Mask|ShiftMask,			XK_r,		spawn,		SHCMD("tdrop-braverxyz") },
+	{ MODKEY,			XK_r,		spawn,		SHCMD("tdrop-firer1") },
+	{ Mod1Mask,			XK_m,		spawn,		SHCMD("tdrop-firemj") },
+	{ Mod1Mask|ShiftMask,			XK_m,		spawn,		SHCMD("tdrop-bravemj") },
+	{ Mod1Mask,			XK_p,		spawn,		SHCMD("tdrop-firearp") },
+	{ Mod1Mask|ShiftMask,			XK_p,		spawn,		SHCMD("tdrop-bravearp") },
 
 	{ MODKEY|ShiftMask,		XK_apostrophe,  spawn,       SHCMD("tdrop-alacritty") },
 	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
@@ -365,6 +367,7 @@ static Key keys[] = {
 	/* { Mod1Mask,   XK_equal, 	togglescratch,	{.ui = 2} }, */
 	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} },
 	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
+	/* { ControlMask,			XK_m,		togglescratch,	{.ui = 3} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,		XK_bracketright,	togglescratch,	{.ui = 1} }, */
