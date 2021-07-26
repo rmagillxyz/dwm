@@ -55,8 +55,9 @@ typedef struct {
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {TERMINAL, "-n", "spfloaterm", "-g", "80x30", NULL};
 const char *spcmd3[] = {TERMINAL, "-n", "speqfloaterm", "-g", "85x35", NULL};
-const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g",
-                        "80x30",  "-e", "ncmpcpp",   NULL};
+const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g", "80x30",  "-e", "ncmpcpp",   NULL};
+/* const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g", "85x35", "-e", "~/.local/bin/vimwiki", NULL}; */
+const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g", "85x35", "-e", "vimwiki", NULL};
 
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",
@@ -71,7 +72,8 @@ static Sp scratchpads[] = {
     {"spterm", spcmd1},
     {"spfloaterm", spcmd2},
     {"speqfloaterm", spcmd3},
-    {"spncmpcpp", spcmd4}
+    {"spncmpcpp", spcmd4},
+    {"spvimwiki", spcmd5}
     /* {"splf", spcmd2}, */
     /* {"spcalc", spcmd3}, */
 };
@@ -86,7 +88,9 @@ static const Rule rules[] = {
      */
     /* class    instance      title       	 tags mask    isfloating
        isterminal  noswallow  monitor */
+
     /* class|instance|title|tags mask|isfloating|isterminal|noswallow|monitor */
+
     /* {"Gimp", NULL, NULL, 1 << 8, 0, 0, 0, -1}, */
     /* { "t.cryp",     NULL,       NULL,       	    1 << 8,       0, 0, 0,
        -1 }, */
@@ -99,6 +103,7 @@ static const Rule rules[] = {
     {NULL, "spfloaterm", NULL, SPTAG(1), 1, 1, 0, -1},
     {NULL, "speqfloaterm", NULL, SPTAG(2), 1, 1, 0, -1},
     {NULL, "spncmpcpp", NULL, SPTAG(3), 1, 1, 0, -1},
+    {NULL, "spvimwiki", NULL, SPTAG(4), 0, 1, 1, -1},
     /* {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1}, */
     /* {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1}, */
 };
@@ -257,24 +262,24 @@ static Key keys[] = {
 	{ MODKEY,			XK_l,		setmfact,      	{.f = +0.05} },
 	{ MODKEY,			XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	shifttag,	{ .i = 1 } },
-	/* { MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} }, */
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_Return, spawn,		{.v = termcmdalt } },
-	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
-	/* { MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 0} }, */
 
 	{ MODKEY,			XK_z,		incrgaps,	{.i = +3 } },
-	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
+	{ MODKEY,			XK_b,		togglebar,	{0} },
+	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
+	{ MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+
+	/* { MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} }, */
+	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
+	/* { MODKEY|ShiftMask,		XK_bracketleft,	togglescratch,	{.ui = 0} }, */
+	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
 	/* V is automatically bound above in STACKKEYS */
-	{ MODKEY,			XK_b,		togglebar,	{0} },
 	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim -c VimwikiIndex") }, */
-	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	/* { MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL " -e ncmpcpp") }, */
-	{ MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	/* { MODKEY|ShiftMask,             XK_m,           spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") }, */
 
 	{ MODKEY,			XK_comma,	focusmon,	{.i = -1 } },
@@ -344,7 +349,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
 	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
 	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
-	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim ~/vimwiki/index.md") },
+	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim ~/vimwiki/index.md") }, */
 
 	/* { MODKEY,			XK_w,		spawn,		SHCMD("~/bin/tdrop-firer") }, */
 	{ Mod1Mask,			XK_r,		spawn,		SHCMD("tdrop-firer") },
@@ -362,6 +367,7 @@ static Key keys[] = {
 	/* { Mod1Mask,   XK_equal, 	togglescratch,	{.ui = 2} }, */
 	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} },
 	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
+	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} }
 	/* { ControlMask,			XK_m,		togglescratch,	{.ui = 3} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
