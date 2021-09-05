@@ -238,7 +238,10 @@ static Key keys[] = {
 
 /* 	it would be nice to allow this to cycle between monocle and deck */
 /* 		 https://bbs.archlinux.org/viewtopic.php?id=103402 */
-	{ Mod1Mask,		XK_s,		setlayout,	{.v = &layouts[5]} }, /* monocle */
+	{ Mod1Mask,		XK_space,		setlayout,	{.v = &layouts[5]} }, /* monocle */
+	{ Mod1Mask,			XK_u,		setlayout,	{.v = &layouts[4]} }, /* deck */
+  /* { Mod1Mask, XK_k, focus##stack, {.i = INC(-1)} 							},                              \ */
+  /* { Mod1Mask, XK_k, 			focus, 				{.i = INC(-1)} },                              \ */
 
 	{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
 	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
