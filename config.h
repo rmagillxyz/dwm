@@ -207,7 +207,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
 	{ MODKEY,			XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
+	/* { MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") }, */
 	{ MODKEY,			XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("pamixer --allow-boost -i 15; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_BackSpace,	spawn,		SHCMD("sysact") },
@@ -255,7 +255,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Right,	spawn,		SHCMD("mpc repeat") },
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
-	{ MODKEY,			XK_a,		togglegaps,	{0} },
+	{ MODKEY|ShiftMask,			XK_minus,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
 	{ MODKEY,			XK_s,		togglesticky,	{0} },
 	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
@@ -277,8 +277,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD(TERMINAL " -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY|ShiftMask,		XK_p,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 
-	{ Mod1Mask,			XK_h,		shiftview,	{ .i = -1 } },
-	{ Mod1Mask,			XK_l,		shiftview,	{ .i = 1 } },
+	{ MODKEY,			XK_a,		shiftview,	{ .i = -1 } },
+	/* { MODKEY,			XK_l,		shiftview,	{ .i = 1 } }, */
 
 	/* { MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 1} }, */
 	/* { MODKEY|ShiftMask,		XK_apostrophe,	spawn,		SHCMD("") }, */
@@ -377,6 +377,8 @@ static Key keys[] = {
 	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} },
 	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
 	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} }
+	/* __zmoom__ */
+
 	/* { ControlMask,			XK_m,		togglescratch,	{.ui = 3} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
 	/* { MODKEY|ShiftMask,   XK_l, 	togglescratch,	{.ui = 2} }, */
