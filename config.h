@@ -38,7 +38,7 @@ static char normbgcolor[] = "#222222";
 static char normfgcolor[] = "#bbbbbb";
 /* static char normbordercolor[] = "#333333"; // unfocused border */
 static char normbordercolor[] = "#444444"; // unfocused border
-static char selbordercolor[] = "#888888"; // focused border
+static char selbordercolor[] = "#888888";  // focused border
 static char selfgcolor[] = "#eeeeee";
 static char selbgcolor[] = "#3a3a3a";
 
@@ -55,9 +55,12 @@ typedef struct {
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL};
 const char *spcmd2[] = {TERMINAL, "-n", "spfloaterm", "-g", "80x30", NULL};
 const char *spcmd3[] = {TERMINAL, "-n", "speqfloaterm", "-g", "85x35", NULL};
-const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g", "80x30",  "-e", "ncmpcpp",   NULL};
-/* const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g", "85x35", "-e", "~/.local/bin/vimwiki", NULL}; */
-const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g", "85x35", "-e", "vimwiki", NULL};
+const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g",
+                        "80x30",  "-e", "ncmpcpp",   NULL};
+/* const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g", "85x35", "-e",
+ * "~/.local/bin/vimwiki", NULL}; */
+const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g",
+                        "85x35",  "-e", "vimwiki",   NULL};
 
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",
@@ -112,7 +115,8 @@ static const Rule rules[] = {
 static float mfact = 0.55;  /* factor of master area size [0.05..0.95] */
 static int nmaster = 1;     /* number of clients in master area */
 static int resizehints = 0; /* 1 means respect size hints in tiled resizals */
-#define FORCE_VSPLIT 1 /* nrowgrid layout: force two clients to always split vertically */
+#define FORCE_VSPLIT                                                           \
+  1 /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 static const Layout layouts[] = {
     /* symbol     arrange function */
@@ -376,7 +380,14 @@ static Key keys[] = {
 	/* { Mod1Mask,   XK_equal, 	togglescratch,	{.ui = 2} }, */
 	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} },
 	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
-	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} }
+	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} },
+
+	/* { Mod1Mask,             XK_o,      inplacerotate,  {.i = +1} }, */
+	{ Mod1Mask,             XK_o,      inplacerotate,  {.i = -2} },
+	/* { MODKEY|ShiftMask,             XK_k,      inplacerotate,  {.i = -1} }, */
+	/* { MODKEY|ShiftMask,             XK_h,      inplacerotate,  {.i = +2} }, */
+	/* { MODKEY|ShiftMask,             XK_l,      inplacerotate,  {.i = -2} }, */
+
 	/* __zmoom__ */
 
 	/* { ControlMask,			XK_m,		togglescratch,	{.ui = 3} }, */
