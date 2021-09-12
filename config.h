@@ -63,6 +63,8 @@ const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g",
                         "85x35",  "-e", "vimwiki",   NULL};
 const char *spcmd6[] = {TERMINAL, "-n", "spclipmenu", "-g",
                         "85x35",  "-e", "clipmenu",   NULL};
+const char *spcmd7[] = {TERMINAL, "-n", "spfzfpass", "-g",
+                        "85x35",  "-e", "fzf-pass-dwm",   NULL};
 
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",
@@ -79,7 +81,8 @@ static Sp scratchpads[] = {
     {"speqfloaterm", spcmd3},
     {"spncmpcpp", spcmd4},
     {"spvimwiki", spcmd5},
-    {"spclipmenu", spcmd6}
+    {"spclipmenu", spcmd6},
+    {"spfzfpass", spcmd7}
     /* {"splf", spcmd2}, */
     /* {"spcalc", spcmd3}, */
 };
@@ -111,6 +114,7 @@ static const Rule rules[] = {
     {NULL, "spncmpcpp", NULL, SPTAG(3), 1, 1, 0, -1},
     {NULL, "spvimwiki", NULL, SPTAG(4), 0, 1, 1, -1},
     {NULL, "spclipmenu", NULL, SPTAG(5), 0, 1, 1, -1},
+    {NULL, "spfzfpass", NULL, SPTAG(6), 0, 1, 1, -1},
     /* {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1}, */
     /* {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1}, */
 };
@@ -378,15 +382,16 @@ static Key keys[] = {
 	{ Mod1Mask|ShiftMask,			XK_p,		spawn,		SHCMD("tdrop-bravearp") },
 
 	{ MODKEY|ShiftMask,		XK_apostrophe,  spawn,       SHCMD("tdrop-alacritty") },
-	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") },
-	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} },
-	{ Mod1Mask,   XK_bracketleft, 	togglescratch,	{.ui = 1} },
+	{ Mod1Mask,           XK_semicolon,   spawn,       SHCMD("tdrop-st") }, 
+	{  Mod1Mask,           XK_apostrophe,	togglescratch,	{.ui = 0} }, // scratch st terminal
+	{ Mod1Mask,   XK_bracketleft, 	togglescratch,	{.ui = 1} }, // scratch float st terminal
 	/* { Mod1Mask,   XK_equal, 	togglescratch,	{.ui = 2} }, */
-	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} },
-	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
-	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} },
+	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} }, // scratch float st terminal
+	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} }, // ncmpcpp
+	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} }, // vimwiki
 	/* { MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") }, */
-	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 5} },
+	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 5} }, // clipmenu
+	{ Mod1Mask|ControlMask,			XK_p,	togglescratch,	{.ui = 6} }, // fzf-pass-dwm
 
 	{ MODKEY|Mod1Mask,             XK_j,      inplacerotate,  {.i = +1} },
 	{ MODKEY|Mod1Mask,             XK_k,      inplacerotate,  {.i = -1} },
