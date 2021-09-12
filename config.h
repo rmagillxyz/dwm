@@ -382,11 +382,13 @@ static Key keys[] = {
 	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
 	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} },
 
-	/* { Mod1Mask,             XK_o,      inplacerotate,  {.i = +1} }, */
-	{ Mod1Mask,             XK_o,      inplacerotate,  {.i = -2} },
-	/* { MODKEY|ShiftMask,             XK_k,      inplacerotate,  {.i = -1} }, */
-	/* { MODKEY|ShiftMask,             XK_h,      inplacerotate,  {.i = +2} }, */
-	/* { MODKEY|ShiftMask,             XK_l,      inplacerotate,  {.i = -2} }, */
+	{ MODKEY|Mod1Mask,             XK_j,      inplacerotate,  {.i = +1} },
+	{ MODKEY|Mod1Mask,             XK_k,      inplacerotate,  {.i = -1} },
+	{ MODKEY|Mod1Mask,             XK_h,      inplacerotate,  {.i = +2} },
+	{ MODKEY|Mod1Mask,             XK_l,      inplacerotate,  {.i = -2} },
+
+/* 	{ Mod1Mask,             XK_o,      inplacerotate,  {.i = -2} }, */
+/* 	{ Mod1Mask,             XK_l,      inplacerotate,  {.i = -2} }, */
 
 	/* __zmoom__ */
 
