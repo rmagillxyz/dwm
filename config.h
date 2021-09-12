@@ -61,6 +61,8 @@ const char *spcmd4[] = {TERMINAL, "-n", "spncmpcpp", "-g",
  * "~/.local/bin/vimwiki", NULL}; */
 const char *spcmd5[] = {TERMINAL, "-n", "spvimwiki", "-g",
                         "85x35",  "-e", "vimwiki",   NULL};
+const char *spcmd6[] = {TERMINAL, "-n", "spclipmenu", "-g",
+                        "85x35",  "-e", "clipmenu",   NULL};
 
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "80x30", NULL}; */
 /* const char *spcmd2[] = {TERMINAL, "-n", "splf", "-g", "124x41", "-e", "lf",
@@ -76,7 +78,8 @@ static Sp scratchpads[] = {
     {"spfloaterm", spcmd2},
     {"speqfloaterm", spcmd3},
     {"spncmpcpp", spcmd4},
-    {"spvimwiki", spcmd5}
+    {"spvimwiki", spcmd5},
+    {"spclipmenu", spcmd6}
     /* {"splf", spcmd2}, */
     /* {"spcalc", spcmd3}, */
 };
@@ -107,6 +110,7 @@ static const Rule rules[] = {
     {NULL, "speqfloaterm", NULL, SPTAG(2), 1, 1, 0, -1},
     {NULL, "spncmpcpp", NULL, SPTAG(3), 1, 1, 0, -1},
     {NULL, "spvimwiki", NULL, SPTAG(4), 0, 1, 1, -1},
+    {NULL, "spclipmenu", NULL, SPTAG(5), 0, 1, 1, -1},
     /* {NULL, "splf", NULL, SPTAG(1), 1, 1, 0, -1}, */
     /* {NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1}, */
 };
@@ -359,7 +363,7 @@ static Key keys[] = {
 
    /* jenny bindings */
 	{ ControlMask|ShiftMask,               XK_z,     spawn,       SHCMD("/usr/local/bin/zoomx") },
-	{ MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") },
+	/* { MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") }, */
 	{ MODKEY,			XK_c,		spawn,		SHCMD("speedcrunch") },
 	{ MODKEY|ShiftMask,			XK_c,		spawn,		SHCMD("wttr-notify") },
 	/* { MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e nvim ~/vimwiki/index.md") }, */
@@ -381,6 +385,8 @@ static Key keys[] = {
 	{ Mod1Mask,   XK_bracketright, 	togglescratch,	{.ui = 2} },
 	{ MODKEY,			XK_m,		togglescratch,	{.ui = 3} },
 	{ MODKEY,			XK_n,		togglescratch,	{.ui = 4} },
+	/* { MODKEY,			XK_apostrophe,	spawn,		SHCMD("clipmenu") }, */
+	{ MODKEY,			XK_apostrophe,	togglescratch,	{.ui = 5} },
 
 	{ MODKEY|Mod1Mask,             XK_j,      inplacerotate,  {.i = +1} },
 	{ MODKEY|Mod1Mask,             XK_k,      inplacerotate,  {.i = -1} },
